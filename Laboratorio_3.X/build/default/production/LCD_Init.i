@@ -2638,8 +2638,9 @@ extern __bank0 __bit __timeout;
 void initLCD (void);
 void lcd_cmd (uint8_t command);
 void lcd_clr (void);
-void lcd_write_char(unsigned char var);
-void lcd_rst_cursor(void);
+void lcd_set_cursor(uint8_t posy, uint8_t posx);
+void lcd_write_char(char var);
+void lcd_write_string(char *var);
 # 3 "LCD_Init.c" 2
 
 
@@ -2672,4 +2673,31 @@ void lcd_cmd(uint8_t command){
     PORTBbits.RB7 = 1;
     _delay((unsigned long)((4)*(4000000/4000.0)));
     PORTBbits.RB7 = 0;
+}
+
+void lcd_clr (void){
+    lcd_cmd(0x01);
+}
+
+void lcd_set_cursor(uint8_t posx, uint8_t posy){
+    if(posy == 1){
+        lcd_cmd (0x80 + posx - 1);
+    }
+    if(posy == 2){
+        lcd_cmd (0xC0 + posx - 1);
+    }
+}
+
+void lcd_write_char(char var){
+    PORTBbits.RB6 = 1;
+    PORTD = var;
+    PORTBbits.RB7 = 1;
+    _delay((unsigned long)((4)*(4000000/4000.0)));
+    PORTBbits.RB7 = 0;
+}
+
+void lcd_write_string(char *var){
+    int i;
+ for(i=0;var[i]!='\0';i++)
+    lcd_write_char(var[i]);
 }

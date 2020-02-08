@@ -15,8 +15,8 @@
 void initLCD (void);
 void lcd_cmd (uint8_t command);
 void lcd_clr (void);
-void lcd_write_char(unsigned char var);
-void lcd_rst_cursor(void);
+void lcd_set_cursor(uint8_t posy, uint8_t posx);
+void lcd_write_char(char var);
+void lcd_write_string(char *var);
 
 #endif	/* LCD_INIT_H */
-
