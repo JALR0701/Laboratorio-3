@@ -2661,7 +2661,7 @@ typedef uint16_t uintptr_t;
 
 
 void initLCD (void);
-void lcd_cmd ();
+void lcd_cmd (uint8_t command);
 void lcd_clr (void);
 void lcd_write_char(unsigned char var);
 void lcd_rst_cursor(void);
@@ -2681,20 +2681,16 @@ void main(void) {
     PORTD = 0;
 
     initLCD ();
+    lcd_cmd(0x80);
+
+    PORTBbits.RB6 = 1;
+    PORTD = 0b01010000;
+    PORTBbits.RB7 = 1;
+    _delay((unsigned long)((4)*(4000000/4000.0)));
+    PORTBbits.RB7 = 0;
 
     while (1){
-         lcd_clr ();
-         lcd_rst_cursor();
-         lcd_write_char(1);
-         _delay((unsigned long)((1000)*(4000000/4000.0)));
-         lcd_clr ();
-         lcd_rst_cursor();
-         lcd_write_char(2);
-         _delay((unsigned long)((1000)*(4000000/4000.0)));
-         lcd_clr ();
-         lcd_rst_cursor();
-         lcd_write_char(3);
-         _delay((unsigned long)((1000)*(4000000/4000.0)));
+# 63 "LCD.c"
     }
 
     return;

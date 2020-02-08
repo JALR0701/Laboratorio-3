@@ -13,7 +13,7 @@
 #define _XTAL_FREQ 4000000
 
 void initLCD (void);
-void lcd_cmd ();
+void lcd_cmd (uint8_t command);
 void lcd_clr (void);
 void lcd_write_char(unsigned char var);
 void lcd_rst_cursor(void);

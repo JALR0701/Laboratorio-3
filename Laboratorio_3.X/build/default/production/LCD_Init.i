@@ -2636,7 +2636,7 @@ extern __bank0 __bit __timeout;
 
 
 void initLCD (void);
-void lcd_cmd ();
+void lcd_cmd (uint8_t command);
 void lcd_clr (void);
 void lcd_write_char(unsigned char var);
 void lcd_rst_cursor(void);
@@ -2647,38 +2647,29 @@ void lcd_rst_cursor(void);
 
 void initLCD (void){
 _delay((unsigned long)((15)*(4000000/4000.0)));
-PORTD = 0x030;
+
+lcd_cmd(0x030);
 _delay((unsigned long)((5)*(4000000/4000.0)));
-PORTD = 0x030;
-_delay((unsigned long)((160)*(4000000/4000000.0)));
-PORTD = 0x030;
-_delay((unsigned long)((160)*(4000000/4000000.0)));
 
-PORTBbits.RB6 = 0;
-PORTBbits.RB7 = 0;
+lcd_cmd(0x030);
+_delay((unsigned long)((11)*(4000000/4000.0)));
+
+lcd_cmd(0x030);
 _delay((unsigned long)((160)*(4000000/4000000.0)));
 
-PORTD = 60;
-lcd_cmd();
-
-PORTD = 1;
-PORTBbits.RB6 = 0;
-PORTBbits.RB7 = 0;
-_delay((unsigned long)((1.64)*(4000000/4000.0)));
-PORTBbits.RB7 = 0;
-
-PORTD = 7;
-lcd_cmd();
-
-PORTD = 15;
-lcd_cmd();
+lcd_cmd(0x38);
+lcd_cmd(0x10);
+lcd_cmd(0x01);
+lcd_cmd(0x06);
+lcd_cmd(0x0C);
 }
 
 
 
-void lcd_cmd(){
+void lcd_cmd(uint8_t command){
     PORTBbits.RB6 = 0;
-    PORTBbits.RB7 = 0;
-    _delay((unsigned long)((40)*(4000000/4000000.0)));
+    PORTD = command;
+    PORTBbits.RB7 = 1;
+    _delay((unsigned long)((4)*(4000000/4000.0)));
     PORTBbits.RB7 = 0;
 }

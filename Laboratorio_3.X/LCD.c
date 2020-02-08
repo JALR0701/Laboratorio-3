@@ -38,10 +38,17 @@ void main(void) {
     PORTC = 0;
     PORTD = 0;
     
-    initLCD ();
+    initLCD ();//Inicializamos la LCD
+    lcd_cmd(0x80);//Se posiciona en (1,1)
+    //Escribir un Char
+    PORTBbits.RB6 = 1;
+    PORTD = 0b01010000;
+    PORTBbits.RB7 = 1;
+    __delay_ms(4);
+    PORTBbits.RB7 = 0;  
     
     while (1){ //Loop
-         lcd_clr ();
+        /* lcd_clr ();
          lcd_rst_cursor();
          lcd_write_char(1);
          __delay_ms(1000);
@@ -52,7 +59,7 @@ void main(void) {
          lcd_clr ();
          lcd_rst_cursor();
          lcd_write_char(3);
-         __delay_ms(1000);
+         __delay_ms(1000);*/
     }
     
     return; 
