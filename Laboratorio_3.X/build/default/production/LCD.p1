@@ -81,31 +81,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./LCD_Init.h
 [; ;./LCD_Init.h: 15: void initLCD (void);
 [v _initLCD `(v ~T0 @X0 0 ef ]
+"17
+[; ;./LCD_Init.h: 17: void lcd_clr (void);
+[v _lcd_clr `(v ~T0 @X0 0 ef ]
+"18
+[; ;./LCD_Init.h: 18: void lcd_set_cursor(uint8_t posy, uint8_t posx);
+[v _lcd_set_cursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"20
+[; ;./LCD_Init.h: 20: void lcd_write_string(char *var);
+[v _lcd_write_string `(v ~T0 @X0 0 ef1`*uc ]
 "15 ./ADC_Init.h
 [; ;./ADC_Init.h: 15: void initADC (uint8_t analog);
 [v _initADC `(v ~T0 @X0 0 ef1`uc ]
-"20 ./LCD_Init.h
-[; ;./LCD_Init.h: 20: void lcd_write_string(char *var);
-[v _lcd_write_string `(v ~T0 @X0 0 ef1`*uc ]
+"1238 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
+[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
+"21 ./LCD_Init.h
+[; ;./LCD_Init.h: 21: void lcd_write_int(uint8_t numero);
+[v _lcd_write_int `(v ~T0 @X0 0 ef1`uc ]
+"19
+[; ;./LCD_Init.h: 19: void lcd_write_char(char var);
+[v _lcd_write_char `(v ~T0 @X0 0 ef1`uc ]
 [v F1256 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
-"17 ./LCD_Init.h
-[; ;./LCD_Init.h: 17: void lcd_clr (void);
-[v _lcd_clr `(v ~T0 @X0 0 ef ]
-"21
-[; ;./LCD_Init.h: 21: void lcd_write_int(uint8_t numero);
-[v _lcd_write_int `(v ~T0 @X0 0 ef1`uc ]
-"1238 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
-[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
-"18 ./LCD_Init.h
-[; ;./LCD_Init.h: 18: void lcd_set_cursor(uint8_t posy, uint8_t posx);
-[v _lcd_set_cursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"22
-[; ;./LCD_Init.h: 22: void lcd_write_float(float numero);
-[v _lcd_write_float `(v ~T0 @X0 0 ef1`f ]
 "7 LCD.c
 [p x FOSC = INTRC_NOCLKOUT ]
 "8
@@ -365,27 +365,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "31 LCD.c
-[; ;LCD.c: 31: uint8_t ready = 0, adc = 0, adc2 = 0;
+[; ;LCD.c: 31: uint8_t ready = 0, entero1 = 0, entero2 = 0, decimale1 = 0, decimale2 = 0;
 [v _ready `uc ~T0 @X0 1 e ]
 [i _ready
 -> -> 0 `i `uc
 ]
-[v _adc `uc ~T0 @X0 1 e ]
-[i _adc
+[v _entero1 `uc ~T0 @X0 1 e ]
+[i _entero1
 -> -> 0 `i `uc
 ]
-[v _adc2 `uc ~T0 @X0 1 e ]
-[i _adc2
+[v _entero2 `uc ~T0 @X0 1 e ]
+[i _entero2
+-> -> 0 `i `uc
+]
+[v _decimale1 `uc ~T0 @X0 1 e ]
+[i _decimale1
+-> -> 0 `i `uc
+]
+[v _decimale2 `uc ~T0 @X0 1 e ]
+[i _decimale2
 -> -> 0 `i `uc
 ]
 "32
-[; ;LCD.c: 32: float decimal = 0, voltaje = 0;
-[v _decimal `f ~T0 @X0 1 e ]
-[i _decimal
+[; ;LCD.c: 32: float adc1 = 0, adc2 = 0, decimal1 = 0, decimal2 = 0;
+[v _adc1 `f ~T0 @X0 1 e ]
+[i _adc1
 -> -> 0 `i `f
 ]
-[v _voltaje `f ~T0 @X0 1 e ]
-[i _voltaje
+[v _adc2 `f ~T0 @X0 1 e ]
+[i _adc2
+-> -> 0 `i `f
+]
+[v _decimal1 `f ~T0 @X0 1 e ]
+[i _decimal1
+-> -> 0 `i `f
+]
+[v _decimal2 `f ~T0 @X0 1 e ]
+[i _decimal2
 -> -> 0 `i `f
 ]
 [v $root$_ISR `(v ~T0 @X0 0 e ]
@@ -463,26 +479,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;LCD.c: 66:     initLCD();
 [e ( _initLCD ..  ]
 "67
-[; ;LCD.c: 67:     initADC(0);
-[e ( _initADC (1 -> -> 0 `i `uc ]
+[; ;LCD.c: 67:     lcd_clr();
+[e ( _lcd_clr ..  ]
 "68
-[; ;LCD.c: 68:     lcd_write_string("Hola Mundo");
-[e ( _lcd_write_string (1 :s 1C ]
+[; ;LCD.c: 68:     lcd_set_cursor(1,1);
+[e ( _lcd_set_cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "69
-[; ;LCD.c: 69:     _delay((unsigned long)((1000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 69:     lcd_write_string ("POT01");
+[e ( _lcd_write_string (1 :s 1C ]
 "70
-[; ;LCD.c: 70:     lcd_clr();
-[e ( _lcd_clr ..  ]
+[; ;LCD.c: 70:     lcd_set_cursor(7,1);
+[e ( _lcd_set_cursor (2 , -> -> 7 `i `uc -> -> 1 `i `uc ]
 "71
-[; ;LCD.c: 71:     lcd_write_int(255);
-[e ( _lcd_write_int (1 -> -> 255 `i `uc ]
+[; ;LCD.c: 71:     lcd_write_string ("POT02");
+[e ( _lcd_write_string (1 :s 2C ]
 "72
-[; ;LCD.c: 72:     _delay((unsigned long)((1000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;LCD.c: 72:     lcd_set_cursor(14,1);
+[e ( _lcd_set_cursor (2 , -> -> 14 `i `uc -> -> 1 `i `uc ]
 "73
-[; ;LCD.c: 73:     lcd_clr();
-[e ( _lcd_clr ..  ]
+[; ;LCD.c: 73:     lcd_write_string ("TTL");
+[e ( _lcd_write_string (1 :s 3C ]
 "75
 [; ;LCD.c: 75:     while (1){
 [e :U 142 ]
@@ -495,8 +511,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != -> _ready `i -> 0 `i 144  ]
 {
 "78
-[; ;LCD.c: 78:             adc = ADRESH * 5/255;
-[e = _adc -> / * -> _ADRESH `i -> 5 `i -> 255 `i `uc ]
+[; ;LCD.c: 78:             adc1 = ADRESH;
+[e = _adc1 -> _ADRESH `f ]
 "79
 [; ;LCD.c: 79:             ready = 0;
 [e = _ready -> -> 0 `i `uc ]
@@ -508,25 +524,100 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 144 ]
 "82
-[; ;LCD.c: 82:         PORTC = adc;
-[e = _PORTC _adc ]
+[; ;LCD.c: 82:         adc1 = adc1 * 5/255;
+[e = _adc1 / * _adc1 -> -> 5 `i `f -> -> 255 `i `f ]
 "83
-[; ;LCD.c: 83:         lcd_set_cursor (1,1);
-[e ( _lcd_set_cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;LCD.c: 83:         entero1 = adc1;
+[e = _entero1 -> _adc1 `uc ]
 "84
-[; ;LCD.c: 84:         lcd_write_float(adc);
-[e ( _lcd_write_float (1 -> _adc `f ]
+[; ;LCD.c: 84:         decimal1 = (adc1 - entero1)*10;
+[e = _decimal1 * - _adc1 -> -> _entero1 `i `f -> -> 10 `i `f ]
 "85
-[; ;LCD.c: 85:     }
+[; ;LCD.c: 85:         decimale1 = decimal2;
+[e = _decimale1 -> _decimal2 `uc ]
+"86
+[; ;LCD.c: 86:         lcd_set_cursor(1,2);
+[e ( _lcd_set_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
+"87
+[; ;LCD.c: 87:         lcd_write_int(entero1);
+[e ( _lcd_write_int (1 _entero1 ]
+"88
+[; ;LCD.c: 88:         lcd_write_char('.');
+[e ( _lcd_write_char (1 -> -> 46 `ui `uc ]
+"89
+[; ;LCD.c: 89:         lcd_write_int(decimal1);
+[e ( _lcd_write_int (1 -> _decimal1 `uc ]
+"90
+[; ;LCD.c: 90:         lcd_write_string("V");
+[e ( _lcd_write_string (1 :s 4C ]
+"91
+[; ;LCD.c: 91:         _delay((unsigned long)((20)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"93
+[; ;LCD.c: 93:         initADC(1);
+[e ( _initADC (1 -> -> 1 `i `uc ]
+"94
+[; ;LCD.c: 94:         if(ready){
+[e $ ! != -> _ready `i -> 0 `i 145  ]
+{
+"95
+[; ;LCD.c: 95:             adc2 = ADRESH;
+[e = _adc2 -> _ADRESH `f ]
+"96
+[; ;LCD.c: 96:             ready = 0;
+[e = _ready -> -> 0 `i `uc ]
+"97
+[; ;LCD.c: 97:             ADCON0bits.GO_DONE = 1;
+[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+"98
+[; ;LCD.c: 98:         }
+}
+[e :U 145 ]
+"99
+[; ;LCD.c: 99:         adc2 = adc2 * 5/255;
+[e = _adc2 / * _adc2 -> -> 5 `i `f -> -> 255 `i `f ]
+"100
+[; ;LCD.c: 100:         entero2 = adc2;
+[e = _entero2 -> _adc2 `uc ]
+"101
+[; ;LCD.c: 101:         decimal2 = (adc2 - entero2)*10;
+[e = _decimal2 * - _adc2 -> -> _entero2 `i `f -> -> 10 `i `f ]
+"102
+[; ;LCD.c: 102:         decimale2 = decimal2;
+[e = _decimale2 -> _decimal2 `uc ]
+"103
+[; ;LCD.c: 103:         lcd_set_cursor(7,2);
+[e ( _lcd_set_cursor (2 , -> -> 7 `i `uc -> -> 2 `i `uc ]
+"104
+[; ;LCD.c: 104:         lcd_write_int(entero2);
+[e ( _lcd_write_int (1 _entero2 ]
+"105
+[; ;LCD.c: 105:         lcd_write_char('.');
+[e ( _lcd_write_char (1 -> -> 46 `ui `uc ]
+"106
+[; ;LCD.c: 106:         lcd_write_int(decimal2);
+[e ( _lcd_write_int (1 -> _decimal2 `uc ]
+"107
+[; ;LCD.c: 107:         lcd_write_string("V");
+[e ( _lcd_write_string (1 :s 5C ]
+"108
+[; ;LCD.c: 108:         _delay((unsigned long)((20)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"109
+[; ;LCD.c: 109:     }
 }
 [e :U 141 ]
 [e $U 142  ]
 [e :U 143 ]
-"87
-[; ;LCD.c: 87:     return;
+"111
+[; ;LCD.c: 111:     return;
 [e $UE 140  ]
-"88
-[; ;LCD.c: 88: }
+"112
+[; ;LCD.c: 112: }
 [e :UE 140 ]
 }
-[a 1C 72 111 108 97 32 77 117 110 100 111 0 ]
+[a 4C 86 0 ]
+[a 5C 86 0 ]
+[a 3C 84 84 76 0 ]
+[a 2C 80 79 84 48 50 0 ]
+[a 1C 80 79 84 48 49 0 ]

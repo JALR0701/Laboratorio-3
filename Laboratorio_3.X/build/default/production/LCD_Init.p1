@@ -449,26 +449,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;LCD_Init.c: 69: }
 [e :UE 155 ]
 }
-"71
-[; ;LCD_Init.c: 71: void lcd_write_float(float numero){
-[v _lcd_write_float `(v ~T0 @X0 1 ef1`f ]
-{
-[e :U _lcd_write_float ]
-[v _numero `f ~T0 @X0 1 r1 ]
-[f ]
-"72
-[; ;LCD_Init.c: 72:     char buffer [4];
-[v _buffer `uc ~T0 @X0 -> 4 `i a ]
-"73
-[; ;LCD_Init.c: 73:     sprintf (buffer, "%.2f", numero);
-[e ( _sprintf (1 , (. , &U _buffer :s 2C -> _numero `d ]
-"74
-[; ;LCD_Init.c: 74:     lcd_write_string(buffer);
-[e ( _lcd_write_string (1 &U _buffer ]
-"75
-[; ;LCD_Init.c: 75: }
-[e :UE 156 ]
-}
-[p f _sprintf 8462464 ]
-[a 2C 37 46 50 102 0 ]
+[p f _sprintf 8388736 ]
 [a 1C 37 100 0 ]

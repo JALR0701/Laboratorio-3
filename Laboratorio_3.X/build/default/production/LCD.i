@@ -2667,7 +2667,6 @@ void lcd_set_cursor(uint8_t posy, uint8_t posx);
 void lcd_write_char(char var);
 void lcd_write_string(char *var);
 void lcd_write_int(uint8_t numero);
-void lcd_write_float(float numero);
 # 27 "LCD.c" 2
 
 # 1 "./ADC_Init.h" 1
@@ -2682,8 +2681,8 @@ void initADC (uint8_t analog);
 
 
 
-uint8_t ready = 0, adc = 0, adc2 = 0;
-float decimal = 0, voltaje = 0;
+uint8_t ready = 0, entero1 = 0, entero2 = 0, decimale1 = 0, decimale2 = 0;
+float adc1 = 0, adc2 = 0, decimal1 = 0, decimal2 = 0;
 
 void __attribute__((picinterrupt(("")))) ISR (void){
     INTCONbits.GIE = 0;
@@ -2718,24 +2717,48 @@ void main(void) {
 
 
     initLCD();
-    initADC(0);
-    lcd_write_string("Hola Mundo");
-    _delay((unsigned long)((1000)*(4000000/4000.0)));
     lcd_clr();
-    lcd_write_int(255);
-    _delay((unsigned long)((1000)*(4000000/4000.0)));
-    lcd_clr();
+    lcd_set_cursor(1,1);
+    lcd_write_string ("POT01");
+    lcd_set_cursor(7,1);
+    lcd_write_string ("POT02");
+    lcd_set_cursor(14,1);
+    lcd_write_string ("TTL");
 
     while (1){
         initADC(0);
         if(ready){
-            adc = ADRESH * 5/255;
+            adc1 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
         }
-        PORTC = adc;
-        lcd_set_cursor (1,1);
-        lcd_write_float(adc);
+        adc1 = adc1 * 5/255;
+        entero1 = adc1;
+        decimal1 = (adc1 - entero1)*10;
+        decimale1 = decimal2;
+        lcd_set_cursor(1,2);
+        lcd_write_int(entero1);
+        lcd_write_char('.');
+        lcd_write_int(decimal1);
+        lcd_write_string("V");
+        _delay((unsigned long)((20)*(4000000/4000.0)));
+
+        initADC(1);
+        if(ready){
+            adc2 = ADRESH;
+            ready = 0;
+            ADCON0bits.GO_DONE = 1;
+        }
+        adc2 = adc2 * 5/255;
+        entero2 = adc2;
+        decimal2 = (adc2 - entero2)*10;
+        decimale2 = decimal2;
+        lcd_set_cursor(7,2);
+        lcd_write_int(entero2);
+        lcd_write_char('.');
+        lcd_write_int(decimal2);
+        lcd_write_string("V");
+        _delay((unsigned long)((20)*(4000000/4000.0)));
     }
 
     return;

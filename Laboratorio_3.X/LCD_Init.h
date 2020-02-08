@@ -19,6 +19,5 @@ void lcd_set_cursor(uint8_t posy, uint8_t posx);
 void lcd_write_char(char var);
 void lcd_write_string(char *var);
 void lcd_write_int(uint8_t numero);
-void lcd_write_float(float numero);
 
 #endif	/* LCD_INIT_H */

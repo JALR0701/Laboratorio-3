@@ -2834,7 +2834,6 @@ void lcd_set_cursor(uint8_t posy, uint8_t posx);
 void lcd_write_char(char var);
 void lcd_write_string(char *var);
 void lcd_write_int(uint8_t numero);
-void lcd_write_float(float numero);
 # 5 "LCD_Init.c" 2
 
 
@@ -2899,11 +2898,5 @@ void lcd_write_string(char *var){
 void lcd_write_int(uint8_t numero){
     char buffer [4];
     sprintf (buffer, "%d", numero);
-    lcd_write_string(buffer);
-}
-
-void lcd_write_float(float numero){
-    char buffer [4];
-    sprintf (buffer, "%.2f", numero);
     lcd_write_string(buffer);
 }

@@ -67,9 +67,3 @@ void lcd_write_int(uint8_t numero){
     sprintf (buffer, "%d", numero);
     lcd_write_string(buffer);
 }
-
-void lcd_write_float(float numero){
-    char buffer [4];
-    sprintf (buffer, "%.2f", numero);
-    lcd_write_string(buffer);
-}

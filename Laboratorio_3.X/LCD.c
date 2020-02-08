@@ -28,8 +28,8 @@
 #include "ADC_Init.h"
 #define _XTAL_FREQ 4000000
 
-uint8_t ready = 0, adc = 0, adc2 = 0;
-float decimal = 0, voltaje = 0;
+uint8_t ready = 0, entero1 = 0, entero2 = 0, decimale1 = 0, decimale2 = 0;
+float adc1 = 0, adc2 = 0, decimal1 = 0, decimal2 = 0;
 
 void __interrupt() ISR (void){
     INTCONbits.GIE = 0;
@@ -64,24 +64,48 @@ void main(void) {
     lcd_write_string("Hola Mundo");//Escribir String*/
 
     initLCD();
-    initADC(0);
-    lcd_write_string("Hola Mundo");
-    __delay_ms(1000);
     lcd_clr();
-    lcd_write_int(255);
-    __delay_ms(1000);
-    lcd_clr();
+    lcd_set_cursor(1,1);
+    lcd_write_string ("POT01");
+    lcd_set_cursor(7,1);
+    lcd_write_string ("POT02");
+    lcd_set_cursor(14,1);
+    lcd_write_string ("TTL");
     
     while (1){ //Loop
         initADC(0);
         if(ready){
-            adc = ADRESH * 5/255;
+            adc1 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
         }
-        PORTC = adc;
-        lcd_set_cursor (1,1);
-        lcd_write_float(adc);
+        adc1 = adc1 * 5/255;
+        entero1 = adc1;
+        decimal1 = (adc1 - entero1)*10;
+        decimale1 = decimal2;
+        lcd_set_cursor(1,2);
+        lcd_write_int(entero1);
+        lcd_write_char('.');
+        lcd_write_int(decimal1);
+        lcd_write_string("V");
+        __delay_ms(20);
+        
+        initADC(1);
+        if(ready){
+            adc2 = ADRESH;
+            ready = 0;
+            ADCON0bits.GO_DONE = 1;
+        }
+        adc2 = adc2 * 5/255;
+        entero2 = adc2;
+        decimal2 = (adc2 - entero2)*10;
+        decimale2 = decimal2;
+        lcd_set_cursor(7,2);
+        lcd_write_int(entero2);
+        lcd_write_char('.');
+        lcd_write_int(decimal2);
+        lcd_write_string("V");
+        __delay_ms(20);
     }
     
     return; 
