@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=LCD.c LCD_Init.c ADC_Init.c
+SOURCEFILES_QUOTED_IF_SPACED=LCD.c LCD_Init.c ADC_Init.c Serial_Init.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD.p1 ${OBJECTDIR}/LCD_Init.p1 ${OBJECTDIR}/ADC_Init.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/LCD.p1.d ${OBJECTDIR}/LCD_Init.p1.d ${OBJECTDIR}/ADC_Init.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD.p1 ${OBJECTDIR}/LCD_Init.p1 ${OBJECTDIR}/ADC_Init.p1 ${OBJECTDIR}/Serial_Init.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/LCD.p1.d ${OBJECTDIR}/LCD_Init.p1.d ${OBJECTDIR}/ADC_Init.p1.d ${OBJECTDIR}/Serial_Init.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/LCD.p1 ${OBJECTDIR}/LCD_Init.p1 ${OBJECTDIR}/ADC_Init.p1
+OBJECTFILES=${OBJECTDIR}/LCD.p1 ${OBJECTDIR}/LCD_Init.p1 ${OBJECTDIR}/ADC_Init.p1 ${OBJECTDIR}/Serial_Init.p1
 
 # Source Files
-SOURCEFILES=LCD.c LCD_Init.c ADC_Init.c
+SOURCEFILES=LCD.c LCD_Init.c ADC_Init.c Serial_Init.c
 
 
 
@@ -118,6 +118,14 @@ ${OBJECTDIR}/ADC_Init.p1: ADC_Init.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/ADC_Init.d ${OBJECTDIR}/ADC_Init.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ADC_Init.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/Serial_Init.p1: Serial_Init.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Serial_Init.p1.d 
+	@${RM} ${OBJECTDIR}/Serial_Init.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Serial_Init.p1 Serial_Init.c 
+	@-${MV} ${OBJECTDIR}/Serial_Init.d ${OBJECTDIR}/Serial_Init.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/Serial_Init.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/LCD.p1: LCD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -142,6 +150,14 @@ ${OBJECTDIR}/ADC_Init.p1: ADC_Init.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ADC_Init.p1 ADC_Init.c 
 	@-${MV} ${OBJECTDIR}/ADC_Init.d ${OBJECTDIR}/ADC_Init.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ADC_Init.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/Serial_Init.p1: Serial_Init.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/Serial_Init.p1.d 
+	@${RM} ${OBJECTDIR}/Serial_Init.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Serial_Init.p1 Serial_Init.c 
+	@-${MV} ${OBJECTDIR}/Serial_Init.d ${OBJECTDIR}/Serial_Init.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/Serial_Init.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

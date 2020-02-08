@@ -23,6 +23,8 @@
     <itemPath>LCD_Init.h</itemPath>
     <itemPath>ADC_Init.h</itemPath>
     <itemPath>ADC_Init.c</itemPath>
+    <itemPath>Serial_Init.c</itemPath>
+    <itemPath>Serial_Init.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

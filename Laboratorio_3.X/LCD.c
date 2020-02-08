@@ -26,10 +26,12 @@
 #include <stdint.h>
 #include "LCD_Init.h"
 #include "ADC_Init.h"
+#include "Serial_Init.h"
 #define _XTAL_FREQ 4000000
 
 uint8_t ready = 0, entero1 = 0, entero2 = 0, decimale1 = 0, decimale2 = 0;
 float adc1 = 0, adc2 = 0, decimal1 = 0, decimal2 = 0;
+char ttl = 0;
 
 void __interrupt() ISR (void){
     INTCONbits.GIE = 0;
@@ -64,12 +66,13 @@ void main(void) {
     lcd_write_string("Hola Mundo");//Escribir String*/
 
     initLCD();
+    initSerial(9600);
     lcd_clr();
     lcd_set_cursor(1,1);
     lcd_write_string ("POT01");
     lcd_set_cursor(7,1);
     lcd_write_string ("POT02");
-    lcd_set_cursor(14,1);
+    lcd_set_cursor(13,1);
     lcd_write_string ("TTL");
     
     while (1){ //Loop
@@ -118,6 +121,10 @@ void main(void) {
             lcd_write_string("V");
         }
         __delay_ms(20);
+        receive_char();
+        ttl = RCREG;
+        lcd_set_cursor(13,1);
+        lcd_write_char(ttl);
     }
     
     return; 
