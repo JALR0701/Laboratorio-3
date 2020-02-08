@@ -1,5 +1,7 @@
 #include <stdint.h>
 #include <pic16f887.h>
+ #include <stdio.h>
+ #include <stdlib.h>
 #include "LCD_Init.h"
 
 
@@ -58,4 +60,16 @@ void lcd_write_string(char *var){
     int i;
 	for(i=0;var[i]!='\0';i++)//Separa los caracteres y los manda uno a uno.
 	   lcd_write_char(var[i]);
+}
+
+void lcd_write_int(uint8_t numero){
+    char buffer [4];
+    sprintf (buffer, "%d", numero);
+    lcd_write_string(buffer);
+}
+
+void lcd_write_float(float numero){
+    char buffer [4];
+    sprintf (buffer, "%.2f", numero);
+    lcd_write_string(buffer);
 }

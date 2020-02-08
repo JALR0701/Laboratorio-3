@@ -21,6 +21,8 @@
     </logicalFolder>
     <itemPath>LCD_Init.c</itemPath>
     <itemPath>LCD_Init.h</itemPath>
+    <itemPath>ADC_Init.h</itemPath>
+    <itemPath>ADC_Init.c</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

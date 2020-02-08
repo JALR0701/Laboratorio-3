@@ -25,13 +25,33 @@
 #include <xc.h>
 #include <stdint.h>
 #include "LCD_Init.h"
+#include "ADC_Init.h"
 #define _XTAL_FREQ 4000000
+
+uint8_t ready = 0, adc = 0, adc2 = 0;
+float decimal = 0, voltaje = 0;
+
+void __interrupt() ISR (void){
+    INTCONbits.GIE = 0;
+    INTCONbits.PEIE = 0;
+    
+    if(ADCON0bits.GO_DONE == 0){
+        ready = 1;
+        PIR1bits.ADIF = 0;
+    }
+    
+    INTCONbits.GIE = 1;
+    INTCONbits.PEIE = 1;
+}
 
 void main(void) {
     TRISA = 0b00000011;
     TRISB = 0;
     TRISC = 0;
     TRISD = 0;
+    
+    ANSEL = 0b00000011;
+    
     
     PORTA = 0;
     PORTB = 0;
@@ -44,9 +64,24 @@ void main(void) {
     lcd_write_string("Hola Mundo");//Escribir String*/
 
     initLCD();
+    initADC(0);
+    lcd_write_string("Hola Mundo");
+    __delay_ms(1000);
+    lcd_clr();
+    lcd_write_int(255);
+    __delay_ms(1000);
+    lcd_clr();
     
     while (1){ //Loop
-        
+        initADC(0);
+        if(ready){
+            adc = ADRESH * 5/255;
+            ready = 0;
+            ADCON0bits.GO_DONE = 1;
+        }
+        PORTC = adc;
+        lcd_set_cursor (1,1);
+        lcd_write_float(adc);
     }
     
     return; 

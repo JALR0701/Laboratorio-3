@@ -1,4 +1,4 @@
-# 1 "LCD.c"
+# 1 "ADC_Init.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,61 +6,17 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "LCD.c" 2
+# 1 "ADC_Init.c" 2
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
+# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int8_t;
 
 
 
 
 
 
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
-# 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\xc8debug.h" 1 3
-# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\xc8debug.h" 3
-#pragma intrinsic(__builtin_software_breakpoint)
-extern void __builtin_software_breakpoint(void);
-# 23 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic.h" 1 3
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 2 3
-# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic.h" 2 3
+typedef signed int int16_t;
 
 
 
@@ -68,9 +24,124 @@ extern void __builtin_software_breakpoint(void);
 
 
 
+typedef __int24 int24_t;
 
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic_chip_select.h" 1 3
-# 2703 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic_chip_select.h" 3
+
+
+
+
+
+
+typedef signed long int int32_t;
+# 52 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint8_t;
+
+
+
+
+
+typedef unsigned int uint16_t;
+
+
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+
+
+typedef unsigned long int uint32_t;
+# 88 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_least8_t;
+
+
+
+
+
+
+
+typedef signed int int_least16_t;
+# 109 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_least24_t;
+# 118 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef signed long int int_least32_t;
+# 136 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_least8_t;
+
+
+
+
+
+
+typedef unsigned int uint_least16_t;
+# 154 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_least24_t;
+
+
+
+
+
+
+
+typedef unsigned long int uint_least32_t;
+# 181 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_fast8_t;
+
+
+
+
+
+
+typedef signed int int_fast16_t;
+# 200 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_fast24_t;
+
+
+
+
+
+
+
+typedef signed long int int_fast32_t;
+# 224 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_fast8_t;
+
+
+
+
+
+typedef unsigned int uint_fast16_t;
+# 240 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_fast24_t;
+
+
+
+
+
+
+typedef unsigned long int uint_fast32_t;
+# 268 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef int32_t intmax_t;
+# 282 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
+typedef uint32_t uintmax_t;
+
+
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+# 1 "ADC_Init.c" 2
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic16f887.h" 1 3
 # 44 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic16f887.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__at.h" 1 3
@@ -2482,7 +2553,48 @@ extern volatile __bit nW __attribute__((address(0x4A2)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x4A2)));
-# 2703 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic_chip_select.h" 2 3
+# 2 "ADC_Init.c" 2
+
+# 1 "./ADC_Init.h" 1
+# 11 "./ADC_Init.h"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
+# 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
+extern const char __xc8_OPTIM_SPEED;
+
+extern double __fpnormalize(double);
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\xc8debug.h" 1 3
+# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\xc8debug.h" 3
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+# 23 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic.h" 1 3
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 2 3
+# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic.h" 2 3
+
+
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic_chip_select.h" 1 3
 # 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic.h" 2 3
 # 30 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic.h" 3
 #pragma intrinsic(__nop)
@@ -2516,227 +2628,143 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 25 "LCD.c" 2
+# 11 "./ADC_Init.h" 2
 
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
-
-
-
-
-
-
-typedef signed int int16_t;
-
-
-
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-
-
-
-typedef signed long int int32_t;
-# 52 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
-
-
-
-
-
-typedef unsigned int uint16_t;
-
-
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 26 "LCD.c" 2
-
-# 1 "./LCD_Init.h" 1
-# 12 "./LCD_Init.h"
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
-# 12 "./LCD_Init.h" 2
-
-
-
-void initLCD (void);
-void lcd_cmd (uint8_t command);
-void lcd_clr (void);
-void lcd_set_cursor(uint8_t posy, uint8_t posx);
-void lcd_write_char(char var);
-void lcd_write_string(char *var);
-void lcd_write_int(uint8_t numero);
-void lcd_write_float(float numero);
-# 27 "LCD.c" 2
-
-# 1 "./ADC_Init.h" 1
-# 12 "./ADC_Init.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
 # 12 "./ADC_Init.h" 2
 
 
 
 void initADC (uint8_t analog);
-# 28 "LCD.c" 2
+# 3 "ADC_Init.c" 2
 
 
-
-uint8_t ready = 0, adc = 0, adc2 = 0;
-float decimal = 0, voltaje = 0;
-
-void __attribute__((picinterrupt(("")))) ISR (void){
-    INTCONbits.GIE = 0;
-    INTCONbits.PEIE = 0;
-
-    if(ADCON0bits.GO_DONE == 0){
-        ready = 1;
-        PIR1bits.ADIF = 0;
-    }
-
+void initADC(uint8_t analog){
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-}
 
-void main(void) {
-    TRISA = 0b00000011;
-    TRISB = 0;
-    TRISC = 0;
-    TRISD = 0;
+    PIE1bits.ADIE = 1;
 
-    ANSEL = 0b00000011;
+    PIR1bits.ADIF = 0;
 
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADON = 1;
 
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-    PORTD = 0;
+    switch(analog){
+        case 0:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
 
+        case 1:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 1;
+            break;
 
+        case 2:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 0;
+            break;
 
+        case 3:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 1;
+            break;
 
+        case 4:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
 
+        case 5:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 1;
+            break;
 
-    initLCD();
-    initADC(0);
-    lcd_write_string("Hola Mundo");
-    _delay((unsigned long)((1000)*(4000000/4000.0)));
-    lcd_clr();
-    lcd_write_int(255);
-    _delay((unsigned long)((1000)*(4000000/4000.0)));
-    lcd_clr();
+        case 6:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 0;
+            break;
 
-    while (1){
-        initADC(0);
-        if(ready){
-            adc = ADRESH * 5/255;
-            ready = 0;
-            ADCON0bits.GO_DONE = 1;
-        }
-        PORTC = adc;
-        lcd_set_cursor (1,1);
-        lcd_write_float(adc);
+        case 7:
+            ADCON0bits.CHS3 = 0;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 1;
+            break;
+
+        case 8:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
+
+        case 9:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 1;
+            break;
+
+        case 10:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 0;
+            break;
+
+        case 11:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 0;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 1;
+            break;
+
+        case 12:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 0;
+            break;
+
+        case 13:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 0;
+            ADCON0bits.CHS0 = 1;
+            break;
+
+        case 14:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 0;
+            break;
+
+        case 15:
+            ADCON0bits.CHS3 = 1;
+            ADCON0bits.CHS2 = 1;
+            ADCON0bits.CHS1 = 1;
+            ADCON0bits.CHS0 = 1;
+            break;
     }
+    ADCON1 = 0;
 
-    return;
+    ADCON0bits.GO_DONE = 1;
 }
