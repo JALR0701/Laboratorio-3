@@ -28,7 +28,7 @@
 #define _XTAL_FREQ 4000000
 
 void main(void) {
-    TRISA = 0b11111111;
+    TRISA = 0b00000011;
     TRISB = 0;
     TRISC = 0;
     TRISD = 0;
@@ -38,15 +38,12 @@ void main(void) {
     PORTC = 0;
     PORTD = 0;
     
-    initLCD ();//Inicializamos la LCD.
+    /*initLCD ();//Inicializamos la LCD.
     lcd_clr();//Limpiar el display
-    lcd_set_cursor(1,1);//Posicionar cursor
-    lcd_write_string("POT1");//Escribir String
-    lcd_set_cursor(6,1);
-    lcd_write_string("POT2");
-    lcd_set_cursor(11,1);
-    lcd_write_string("TTL");
-    
+    lcd_set_cursor(x,y);//Posicionar cursor
+    lcd_write_string("Hola Mundo");//Escribir String*/
+
+    initLCD();
     
     while (1){ //Loop
         

@@ -17,19 +17,13 @@
 [v _initLCD initLCD `(v  1 e 1 0 ]
 "28
 [v _lcd_cmd lcd_cmd `(v  1 e 1 0 ]
-"36
-[v _lcd_clr lcd_clr `(v  1 e 1 0 ]
-"40
-[v _lcd_set_cursor lcd_set_cursor `(v  1 e 1 0 ]
 "49
 [v _lcd_write_char lcd_write_char `(v  1 e 1 0 ]
-"57
-[v _lcd_write_string lcd_write_string `(v  1 e 1 0 ]
 "166 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S68 . 1 `uc 1 RB0 1 0 :1:0 
+[s S50 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -39,8 +33,8 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "245
-[u S77 . 1 `S68 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES77  1 e 1 @6 ]
+[u S59 . 1 `S50 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES59  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
@@ -56,43 +50,9 @@
 "30 C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD.c
 [v _main main `(v  1 e 1 0 ]
 {
-"56
+"53
 } 0
-"57 C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD_Init.c
-[v _lcd_write_string lcd_write_string `(v  1 e 1 0 ]
-{
-[v lcd_write_string@var var `*.24uc  1 a 1 wreg ]
-"58
-[v lcd_write_string@i i `i  1 a 2 3 ]
-"57
-[v lcd_write_string@var var `*.24uc  1 a 1 wreg ]
-"59
-[v lcd_write_string@var var `*.24uc  1 a 1 5 ]
-"61
-} 0
-"49
-[v _lcd_write_char lcd_write_char `(v  1 e 1 0 ]
-{
-[v lcd_write_char@var var `uc  1 a 1 wreg ]
-[v lcd_write_char@var var `uc  1 a 1 wreg ]
-[v lcd_write_char@var var `uc  1 a 1 2 ]
-"55
-} 0
-"40
-[v _lcd_set_cursor lcd_set_cursor `(v  1 e 1 0 ]
-{
-[v lcd_set_cursor@posx posx `uc  1 a 1 wreg ]
-[v lcd_set_cursor@posx posx `uc  1 a 1 wreg ]
-[v lcd_set_cursor@posy posy `uc  1 p 1 3 ]
-[v lcd_set_cursor@posx posx `uc  1 a 1 4 ]
-"47
-} 0
-"36
-[v _lcd_clr lcd_clr `(v  1 e 1 0 ]
-{
-"38
-} 0
-"7
+"7 C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD_Init.c
 [v _initLCD initLCD `(v  1 e 1 0 ]
 {
 "24

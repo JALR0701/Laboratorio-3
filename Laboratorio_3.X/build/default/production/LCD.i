@@ -2671,7 +2671,7 @@ void lcd_write_string(char *var);
 
 
 void main(void) {
-    TRISA = 0b11111111;
+    TRISA = 0b00000011;
     TRISB = 0;
     TRISC = 0;
     TRISD = 0;
@@ -2681,15 +2681,12 @@ void main(void) {
     PORTC = 0;
     PORTD = 0;
 
-    initLCD ();
-    lcd_clr();
-    lcd_set_cursor(1,1);
-    lcd_write_string("POT1");
-    lcd_set_cursor(6,1);
-    lcd_write_string("POT2");
-    lcd_set_cursor(11,1);
-    lcd_write_string("TTL");
 
+
+
+
+
+    initLCD();
 
     while (1){
 
