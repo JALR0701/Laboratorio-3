@@ -13,10 +13,8 @@
 #define _XTAL_FREQ 4000000
 
 void initSerial (uint16_t baudrate);
-void send_char (char msg);
-void receive_char (void);
-void ItoC (char *entero);
-void sendInt (int entero);
+void send_float (float msg);
+/*unsigned char receive_char();*/
 
 #endif	/* SERIAL_INIT_H */
 

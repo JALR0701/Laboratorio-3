@@ -99,6 +99,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1238 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
+"16 ./Serial_Init.h
+[; ;./Serial_Init.h: 16: void send_float (float msg);
+[v _send_float `(v ~T0 @X0 0 ef1`f ]
 "21 ./LCD_Init.h
 [; ;./LCD_Init.h: 21: void lcd_write_int(uint8_t numero);
 [v _lcd_write_int `(v ~T0 @X0 0 ef1`uc ]
@@ -109,12 +112,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
-"17 ./Serial_Init.h
-[; ;./Serial_Init.h: 17: void receive_char (void);
-[v _receive_char `(v ~T0 @X0 0 ef ]
-"1140 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
-[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
 "7 LCD.c
 [p x FOSC = INTRC_NOCLKOUT ]
 "8
@@ -554,142 +551,136 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;LCD.c: 88:         decimale1 = decimal1;
 [e = _decimale1 -> _decimal1 `uc ]
 "89
-[; ;LCD.c: 89:         lcd_set_cursor(1,2);
-[e ( _lcd_set_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
+[; ;LCD.c: 89:         send_float(adc1);
+[e ( _send_float (1 _adc1 ]
 "90
-[; ;LCD.c: 90:         lcd_write_int(entero1);
-[e ( _lcd_write_int (1 _entero1 ]
+[; ;LCD.c: 90:         lcd_set_cursor(1,2);
+[e ( _lcd_set_cursor (2 , -> -> 1 `i `uc -> -> 2 `i `uc ]
 "91
-[; ;LCD.c: 91:         lcd_write_char('.');
-[e ( _lcd_write_char (1 -> -> 46 `ui `uc ]
+[; ;LCD.c: 91:         lcd_write_int(entero1);
+[e ( _lcd_write_int (1 _entero1 ]
 "92
-[; ;LCD.c: 92:         if(decimale1 >= 10){
+[; ;LCD.c: 92:         lcd_write_char('.');
+[e ( _lcd_write_char (1 -> -> 46 `ui `uc ]
+"93
+[; ;LCD.c: 93:         if(decimale1 >= 10){
 [e $ ! >= -> _decimale1 `i -> 10 `i 145  ]
 {
-"93
-[; ;LCD.c: 93:             lcd_write_int(decimale1);
-[e ( _lcd_write_int (1 _decimale1 ]
 "94
-[; ;LCD.c: 94:             lcd_write_string("V");
-[e ( _lcd_write_string (1 :s 4C ]
+[; ;LCD.c: 94:             lcd_write_int(decimale1);
+[e ( _lcd_write_int (1 _decimale1 ]
 "95
-[; ;LCD.c: 95:         }else{
+[; ;LCD.c: 95:             lcd_write_string("V");
+[e ( _lcd_write_string (1 :s 4C ]
+"96
+[; ;LCD.c: 96:         }else{
 }
 [e $U 146  ]
 [e :U 145 ]
 {
-"96
-[; ;LCD.c: 96:             lcd_write_string("0");
-[e ( _lcd_write_string (1 :s 5C ]
 "97
-[; ;LCD.c: 97:             lcd_write_int(decimale1);
-[e ( _lcd_write_int (1 _decimale1 ]
+[; ;LCD.c: 97:             lcd_write_string("0");
+[e ( _lcd_write_string (1 :s 5C ]
 "98
-[; ;LCD.c: 98:             lcd_write_string("V");
-[e ( _lcd_write_string (1 :s 6C ]
+[; ;LCD.c: 98:             lcd_write_int(decimale1);
+[e ( _lcd_write_int (1 _decimale1 ]
 "99
-[; ;LCD.c: 99:         }
+[; ;LCD.c: 99:             lcd_write_string("V");
+[e ( _lcd_write_string (1 :s 6C ]
+"100
+[; ;LCD.c: 100:         }
 }
 [e :U 146 ]
-"100
-[; ;LCD.c: 100:         _delay((unsigned long)((20)*(4000000/4000.0)));
+"101
+[; ;LCD.c: 101:         _delay((unsigned long)((20)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"102
-[; ;LCD.c: 102:         initADC(1);
-[e ( _initADC (1 -> -> 1 `i `uc ]
 "103
-[; ;LCD.c: 103:         if(ready){
+[; ;LCD.c: 103:         initADC(1);
+[e ( _initADC (1 -> -> 1 `i `uc ]
+"104
+[; ;LCD.c: 104:         if(ready){
 [e $ ! != -> _ready `i -> 0 `i 147  ]
 {
-"104
-[; ;LCD.c: 104:             adc2 = ADRESH;
-[e = _adc2 -> _ADRESH `f ]
 "105
-[; ;LCD.c: 105:             ready = 0;
-[e = _ready -> -> 0 `i `uc ]
+[; ;LCD.c: 105:             adc2 = ADRESH;
+[e = _adc2 -> _ADRESH `f ]
 "106
-[; ;LCD.c: 106:             ADCON0bits.GO_DONE = 1;
-[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+[; ;LCD.c: 106:             ready = 0;
+[e = _ready -> -> 0 `i `uc ]
 "107
-[; ;LCD.c: 107:         }
+[; ;LCD.c: 107:             ADCON0bits.GO_DONE = 1;
+[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+"108
+[; ;LCD.c: 108:         }
 }
 [e :U 147 ]
-"108
-[; ;LCD.c: 108:         adc2 = adc2 * 5/255;
-[e = _adc2 / * _adc2 -> -> 5 `i `f -> -> 255 `i `f ]
 "109
-[; ;LCD.c: 109:         entero2 = adc2;
-[e = _entero2 -> _adc2 `uc ]
+[; ;LCD.c: 109:         adc2 = adc2 * 5/255;
+[e = _adc2 / * _adc2 -> -> 5 `i `f -> -> 255 `i `f ]
 "110
-[; ;LCD.c: 110:         decimal2 = (adc2 - entero2)*100;
-[e = _decimal2 * - _adc2 -> -> _entero2 `i `f -> -> 100 `i `f ]
+[; ;LCD.c: 110:         entero2 = adc2;
+[e = _entero2 -> _adc2 `uc ]
 "111
-[; ;LCD.c: 111:         decimale2 = decimal2;
-[e = _decimale2 -> _decimal2 `uc ]
+[; ;LCD.c: 111:         decimal2 = (adc2 - entero2)*100;
+[e = _decimal2 * - _adc2 -> -> _entero2 `i `f -> -> 100 `i `f ]
 "112
-[; ;LCD.c: 112:         lcd_set_cursor(7,2);
-[e ( _lcd_set_cursor (2 , -> -> 7 `i `uc -> -> 2 `i `uc ]
+[; ;LCD.c: 112:         decimale2 = decimal2;
+[e = _decimale2 -> _decimal2 `uc ]
 "113
-[; ;LCD.c: 113:         lcd_write_int(entero2);
-[e ( _lcd_write_int (1 _entero2 ]
+[; ;LCD.c: 113:         send_float(adc2);
+[e ( _send_float (1 _adc2 ]
 "114
-[; ;LCD.c: 114:         lcd_write_char('.');
-[e ( _lcd_write_char (1 -> -> 46 `ui `uc ]
+[; ;LCD.c: 114:         lcd_set_cursor(7,2);
+[e ( _lcd_set_cursor (2 , -> -> 7 `i `uc -> -> 2 `i `uc ]
 "115
-[; ;LCD.c: 115:         if(decimale2 >= 10){
+[; ;LCD.c: 115:         lcd_write_int(entero2);
+[e ( _lcd_write_int (1 _entero2 ]
+"116
+[; ;LCD.c: 116:         lcd_write_char('.');
+[e ( _lcd_write_char (1 -> -> 46 `ui `uc ]
+"117
+[; ;LCD.c: 117:         if(decimale2 >= 10){
 [e $ ! >= -> _decimale2 `i -> 10 `i 148  ]
 {
-"116
-[; ;LCD.c: 116:             lcd_write_int(decimale2);
-[e ( _lcd_write_int (1 _decimale2 ]
-"117
-[; ;LCD.c: 117:             lcd_write_string("V");
-[e ( _lcd_write_string (1 :s 7C ]
 "118
-[; ;LCD.c: 118:         }else{
+[; ;LCD.c: 118:             lcd_write_int(decimale2);
+[e ( _lcd_write_int (1 _decimale2 ]
+"119
+[; ;LCD.c: 119:             lcd_write_string("V");
+[e ( _lcd_write_string (1 :s 7C ]
+"120
+[; ;LCD.c: 120:         }else{
 }
 [e $U 149  ]
 [e :U 148 ]
 {
-"119
-[; ;LCD.c: 119:             lcd_write_string("0");
-[e ( _lcd_write_string (1 :s 8C ]
-"120
-[; ;LCD.c: 120:             lcd_write_int(decimale2);
-[e ( _lcd_write_int (1 _decimale2 ]
 "121
-[; ;LCD.c: 121:             lcd_write_string("V");
-[e ( _lcd_write_string (1 :s 9C ]
+[; ;LCD.c: 121:             lcd_write_string("0");
+[e ( _lcd_write_string (1 :s 8C ]
 "122
-[; ;LCD.c: 122:         }
+[; ;LCD.c: 122:             lcd_write_int(decimale2);
+[e ( _lcd_write_int (1 _decimale2 ]
+"123
+[; ;LCD.c: 123:             lcd_write_string("V");
+[e ( _lcd_write_string (1 :s 9C ]
+"124
+[; ;LCD.c: 124:         }
 }
 [e :U 149 ]
-"123
-[; ;LCD.c: 123:         _delay((unsigned long)((20)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"124
-[; ;LCD.c: 124:         receive_char();
-[e ( _receive_char ..  ]
 "125
-[; ;LCD.c: 125:         ttl = RCREG;
-[e = _ttl -> _RCREG `uc ]
+[; ;LCD.c: 125:         _delay((unsigned long)((20)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "126
-[; ;LCD.c: 126:         lcd_set_cursor(13,1);
-[e ( _lcd_set_cursor (2 , -> -> 13 `i `uc -> -> 1 `i `uc ]
-"127
-[; ;LCD.c: 127:         lcd_write_char(ttl);
-[e ( _lcd_write_char (1 _ttl ]
-"128
-[; ;LCD.c: 128:     }
+[; ;LCD.c: 126:     }
 }
 [e :U 141 ]
 [e $U 142  ]
 [e :U 143 ]
-"130
-[; ;LCD.c: 130:     return;
+"128
+[; ;LCD.c: 128:     return;
 [e $UE 140  ]
-"131
-[; ;LCD.c: 131: }
+"129
+[; ;LCD.c: 129: }
 [e :UE 140 ]
 }
 [a 4C 86 0 ]

@@ -7,48 +7,46 @@
 void initSerial(uint16_t baudrate){
     TRISC = 0x80;
     
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
+    /*INTCONbits.GIE = 0;
+    INTCONbits.PEIE = 0;
     
-    PIE1bits.RCIE = 1;
-    PIE1bits.TXIE = 1;
+    PIE1bits.RCIE = 0;
+    PIE1bits.TXIE = 0;
     
     PIR1bits.RCIF = 0;
-    PIR1bits.TXIF = 0;
+    PIR1bits.TXIF = 0;*/
     
-    TXSTAbits.TX9 = 0;
-    TXSTAbits.TXEN = 1;
-    TXSTAbits.SYNC = 0;
-    TXSTAbits.BRGH = 1;
+    TXSTA=0b00100110;
     
-    RCSTAbits.SPEN = 1;
-    RCSTAbits.RX9 = 0;
-    RCSTAbits.CREN = 1;
+    RCSTA=0b10010000;
     
     BAUDCTLbits.BRG16 = 1;
     
-    SPBRG = ((4000000/baudrate)/4)-1;
+    switch (baudrate){            
+        case 9600:
+            SPBRG = 103;
+            
+        case 10417:
+            SPBRG = 95;
+            
+        case 19200:
+            SPBRG = 51;
+        
+        case 57600:
+            SPBRG = 16;
+    }
 }
 
-void send_char (char msg){
-    while (TXIF == 0);
-    TXIF = 0;
+void send_float (float msg){
+    while (TXSTAbits.TRMT == 0){
+    }
     TXREG = msg;
 }
 
-void receive_char(){
-    while(RCIF==0);
-    RCIF=0;        
-}
-
-void ItoC (char *entero){
-    int i;
-	for(i=0;entero[i]!='\0';i++)//Separa los caracteres y los manda uno a uno.
-	   send_char(entero[i]);
-}
-
-void sendInt (int entero){
-    char buffer [4];
-    sprintf (buffer, "%d", entero);
-    ItoC(buffer);
-}
+/*unsigned char receive_char(){
+    if(PIR1bits.RCIF==1){
+        return RCREG;
+    }
+    else
+        return;
+}*/

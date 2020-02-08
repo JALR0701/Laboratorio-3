@@ -2687,10 +2687,7 @@ void initADC (uint8_t analog);
 
 
 void initSerial (uint16_t baudrate);
-void send_char (char msg);
-void receive_char (void);
-void ItoC (char *entero);
-void sendInt (int entero);
+void send_float (float msg);
 # 29 "LCD.c" 2
 
 
@@ -2752,6 +2749,7 @@ void main(void) {
         entero1 = adc1;
         decimal1 = (adc1 - entero1)*100;
         decimale1 = decimal1;
+        send_float(adc1);
         lcd_set_cursor(1,2);
         lcd_write_int(entero1);
         lcd_write_char('.');
@@ -2775,6 +2773,7 @@ void main(void) {
         entero2 = adc2;
         decimal2 = (adc2 - entero2)*100;
         decimale2 = decimal2;
+        send_float(adc2);
         lcd_set_cursor(7,2);
         lcd_write_int(entero2);
         lcd_write_char('.');
@@ -2787,10 +2786,6 @@ void main(void) {
             lcd_write_string("V");
         }
         _delay((unsigned long)((20)*(4000000/4000.0)));
-        receive_char();
-        ttl = RCREG;
-        lcd_set_cursor(13,1);
-        lcd_write_char(ttl);
     }
 
     return;
