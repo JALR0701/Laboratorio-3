@@ -2828,35 +2828,33 @@ extern __bank0 __bit __timeout;
 
 
 void initSerial (uint16_t baudrate);
-void send_float (float msg);
+void send_int (int msg);
 # 5 "Serial_Init.c" 2
 
 
 void initSerial(uint16_t baudrate){
     TRISC = 0x80;
 # 19 "Serial_Init.c"
+    PIE1bits.RCIE = 0;
+
     TXSTA=0b00100110;
 
     RCSTA=0b10010000;
 
     BAUDCTLbits.BRG16 = 1;
 
-    switch (baudrate){
-        case 9600:
-            SPBRG = 103;
-
-        case 10417:
-            SPBRG = 95;
-
-        case 19200:
-            SPBRG = 51;
-
-        case 57600:
-            SPBRG = 16;
+    if(baudrate == 9600){
+        SPBRG = 103;
+    } else if (baudrate == 10417){
+        SPBRG = 95;
+    } else if (baudrate == 19200){
+        SPBRG = 51;
+    } else if (baudrate == 57600){
+        SPBRG = 16;
     }
 }
 
-void send_float (float msg){
+void send_int (int msg){
     while (TXSTAbits.TRMT == 0){
     }
     TXREG = msg;

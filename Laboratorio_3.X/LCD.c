@@ -29,9 +29,8 @@
 #include "Serial_Init.h"
 #define _XTAL_FREQ 4000000
 
-uint8_t ready = 0, entero1 = 0, entero2 = 0, decimale1 = 0, decimale2 = 0;
+uint8_t ready = 0, entero1 = 0, entero2 = 0, decimale1 = 0, decimale2 = 0, ttl = 0;
 float adc1 = 0, adc2 = 0, decimal1 = 0, decimal2 = 0;
-char ttl = 0;
 
 void __interrupt() ISR (void){
     INTCONbits.GIE = 0;
@@ -40,6 +39,10 @@ void __interrupt() ISR (void){
     if(ADCON0bits.GO_DONE == 0){
         ready = 1;
         PIR1bits.ADIF = 0;
+    }
+    
+    if (PIR1bits.RCIF == 1){
+        ttl = RCREG;
     }
     
     INTCONbits.GIE = 1;
@@ -86,16 +89,19 @@ void main(void) {
         entero1 = adc1;
         decimal1 = (adc1 - entero1)*100;
         decimale1 = decimal1;
-        send_float(adc1);
+        send_int(entero1);
         lcd_set_cursor(1,2);
         lcd_write_int(entero1);
         lcd_write_char('.');
         if(decimale1 >= 10){
             lcd_write_int(decimale1);
+            send_int(decimale1);
             lcd_write_string("V");
         }else{
             lcd_write_string("0");
+            send_int(0);
             lcd_write_int(decimale1);
+            send_int(decimale1);
             lcd_write_string("V");
         }
         __delay_ms(20);
@@ -110,19 +116,36 @@ void main(void) {
         entero2 = adc2;
         decimal2 = (adc2 - entero2)*100;
         decimale2 = decimal2;
-        send_float(adc2);
+        send_int(entero2);
         lcd_set_cursor(7,2);
         lcd_write_int(entero2);
         lcd_write_char('.');
         if(decimale2 >= 10){
             lcd_write_int(decimale2);
+            send_int(decimale2);
             lcd_write_string("V");
         }else{
             lcd_write_string("0");
+            send_int(0);
             lcd_write_int(decimale2);
+            send_int(decimale2);
             lcd_write_string("V");
         }
         __delay_ms(20);
+        if(ttl >=100){
+            lcd_set_cursor (13,2);
+            lcd_write_int (ttl);    
+        }else if (ttl < 100 && ttl >= 10){
+            lcd_set_cursor (13,2);
+            lcd_write_char('0');
+            lcd_write_int (ttl);
+        }else {
+            lcd_set_cursor (13,2);
+            lcd_write_char('0');
+            lcd_write_char('0');
+            lcd_write_int (ttl);
+        }
+        
     }
     
     return; 
