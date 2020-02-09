@@ -89,19 +89,16 @@ void main(void) {
         entero1 = adc1;
         decimal1 = (adc1 - entero1)*100;
         decimale1 = decimal1;
-        send_int(entero1);
         lcd_set_cursor(1,2);
         lcd_write_int(entero1);
         lcd_write_char('.');
         if(decimale1 >= 10){
             lcd_write_int(decimale1);
-            send_int(decimale1);
             lcd_write_string("V");
         }else{
             lcd_write_string("0");
             send_int(0);
             lcd_write_int(decimale1);
-            send_int(decimale1);
             lcd_write_string("V");
         }
         __delay_ms(20);
@@ -116,19 +113,15 @@ void main(void) {
         entero2 = adc2;
         decimal2 = (adc2 - entero2)*100;
         decimale2 = decimal2;
-        send_int(entero2);
         lcd_set_cursor(7,2);
         lcd_write_int(entero2);
         lcd_write_char('.');
         if(decimale2 >= 10){
             lcd_write_int(decimale2);
-            send_int(decimale2);
             lcd_write_string("V");
         }else{
             lcd_write_string("0");
-            send_int(0);
             lcd_write_int(decimale2);
-            send_int(decimale2);
             lcd_write_string("V");
         }
         __delay_ms(20);
@@ -146,6 +139,12 @@ void main(void) {
             lcd_write_int (ttl);
         }
         
+        
+        send_int(entero1);
+        send_int(decimale1);
+        send_int(entero2);
+        send_int(decimale2);
+        send_int(255);
     }
     
     return; 
