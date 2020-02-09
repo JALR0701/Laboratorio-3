@@ -10,6 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import serial
 import struct
+import time, threading
 
 while(1):
     while(1):
@@ -26,7 +27,8 @@ while(1):
         print("No se puede abrir el puerto")
 
 contador = 0
-data.write(struct.pack('>B',contador))    
+data.write(struct.pack('>B',contador)) 
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -106,21 +108,21 @@ class Ui_MainWindow(object):
         self.Sensor2_var.setAlignment(QtCore.Qt.AlignCenter)
         self.Sensor2_var.setObjectName("Sensor2_var")
         self.Sensor3_var = QtWidgets.QLabel(self.centralwidget)
-        self.Sensor3_var.setGeometry(QtCore.QRect(580, 160, 91, 21))
+        self.Sensor3_var.setGeometry(QtCore.QRect(590, 160, 91, 21))
         font = QtGui.QFont()
         font.setFamily("OCR A Extended")
         font.setPointSize(16)
         self.Sensor3_var.setFont(font)
         self.Sensor3_var.setAlignment(QtCore.Qt.AlignCenter)
         self.Sensor3_var.setObjectName("Sensor3_var")
-        self.Sensor1_var_2 = QtWidgets.QLabel(self.centralwidget)
-        self.Sensor1_var_2.setGeometry(QtCore.QRect(200, 160, 16, 21))
+        self.Dimension1 = QtWidgets.QLabel(self.centralwidget)
+        self.Dimension1.setGeometry(QtCore.QRect(200, 160, 16, 21))
         font = QtGui.QFont()
         font.setFamily("OCR A Extended")
         font.setPointSize(16)
-        self.Sensor1_var_2.setFont(font)
-        self.Sensor1_var_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.Sensor1_var_2.setObjectName("Sensor1_var_2")
+        self.Dimension1.setFont(font)
+        self.Dimension1.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.Dimension1.setObjectName("Dimension1")
         self.Sensor1_var_3 = QtWidgets.QLabel(self.centralwidget)
         self.Sensor1_var_3.setGeometry(QtCore.QRect(440, 160, 16, 21))
         font = QtGui.QFont()
@@ -129,14 +131,6 @@ class Ui_MainWindow(object):
         self.Sensor1_var_3.setFont(font)
         self.Sensor1_var_3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.Sensor1_var_3.setObjectName("Sensor1_var_3")
-        self.Sensor1_var_4 = QtWidgets.QLabel(self.centralwidget)
-        self.Sensor1_var_4.setGeometry(QtCore.QRect(680, 160, 16, 21))
-        font = QtGui.QFont()
-        font.setFamily("OCR A Extended")
-        font.setPointSize(16)
-        self.Sensor1_var_4.setFont(font)
-        self.Sensor1_var_4.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.Sensor1_var_4.setObjectName("Sensor1_var_4")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -146,8 +140,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        
-    
+
         def suma ():
             global contador
             contador = contador + 1
@@ -164,7 +157,10 @@ class Ui_MainWindow(object):
                 contador = 255
             data.write(struct.pack('>B',contador))
             self.Sensor3_var.setText(str(contador))
-            
+
+        s1 = str(ord(data.read())) + "." + str(ord(data.read()))
+        s2 = str(ord(data.read())) + "." + str(ord(data.read()))
+        
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Serial Port"))
         self.Sensor1_Title.setText(_translate("MainWindow", "Sensor 1"))
@@ -174,12 +170,11 @@ class Ui_MainWindow(object):
         self.Button_Minus.setText(_translate("MainWindow", "-"))
         self.COM_Title.setText(_translate("MainWindow", "COM:"))
         self.COM_var.setText(_translate("MainWindow", numero))
-        self.Sensor1_var.setText(_translate("MainWindow", "0.0"))
-        self.Sensor2_var.setText(_translate("MainWindow", "0.0"))
+        self.Sensor1_var.setText(_translate("MainWindow", s1))
+        self.Sensor2_var.setText(_translate("MainWindow", s2))
         self.Sensor3_var.setText(_translate("MainWindow", str(contador)))
-        self.Sensor1_var_2.setText(_translate("MainWindow", "V"))
+        self.Dimension1.setText(_translate("MainWindow", "V"))
         self.Sensor1_var_3.setText(_translate("MainWindow", "V"))
-        self.Sensor1_var_4.setText(_translate("MainWindow", "V"))
         self.Button_Plus.clicked.connect(suma)
         self.Button_Minus.clicked.connect(resta)
 

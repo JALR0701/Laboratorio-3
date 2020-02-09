@@ -204,7 +204,7 @@
    <widget class="QLabel" name="Sensor3_var">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>590</x>
       <y>160</y>
       <width>91</width>
       <height>21</height>
@@ -223,7 +223,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="Sensor1_var_2">
+   <widget class="QLabel" name="Dimension1">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -249,28 +249,6 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>160</y>
-      <width>16</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>OCR A Extended</family>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>V</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Sensor1_var_4">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
       <y>160</y>
       <width>16</width>
       <height>21</height>
