@@ -1,12 +1,15 @@
 import tkinter as tk
 import serial
 import struct
+import threading
+import time
+import queue
 
 while(1):
     while(1):
         try:
-            number = str(int(input(">  COM: ")))
-            port = "com" + number
+            numero = str(int(input(">  COM: ")))
+            port = "com" + numero
             break
         except:
             print ("Enter a numeric value")
@@ -17,6 +20,7 @@ while(1):
         print("Unable to open port")
         
 contador = 0
+data.write(struct.pack('>B',contador))
 
 def suma ():
     global contador
@@ -24,7 +28,7 @@ def suma ():
     if contador > 255:
         contador = 0
     data.write(struct.pack('>B',contador))
-    texto.set(contador)
+    sensor3.set(contador)
     return
 
 def resta ():
@@ -33,9 +37,8 @@ def resta ():
     if contador < 0:
         contador = 255
     data.write(struct.pack('>B',contador))
-    texto.set(contador) 
+    sensor3.set(contador) 
     return
-    
 
 Main = tk.Tk()
 Main.title("Comunicación serial")
@@ -52,13 +55,13 @@ Main.geometry('%dx%d+%d+%d' % (w, h, x, y))
 Main.resizable(0,0)
 Main. config (background = "Black")
 
-com = tk.Label(Main, text = "COM:" + number, bg = "black", fg = "white")
+com = tk.Label(Main, text = "COM:" + numero, bg = "black", fg = "white")
 com.place(x = 50, y = 30)
 
-texto = tk.StringVar()
-texto.set(contador)
+sensor3 = tk.StringVar()
+sensor3.set(contador)
 
-ttl = tk.Label(Main, textvariable = texto, bg = "black", fg = "white")
+ttl = tk.Label(Main, textvariable = sensor3, bg = "black", fg = "white")
 ttl.place(x = 350, y = 250)
 
 aumentar = tk.Button(Main, text = "+", command = suma)
@@ -66,9 +69,5 @@ aumentar.place(x = 400, y = 300)
 
 decrementar = tk.Button(Main, text = "-", command = resta)
 decrementar.place(x = 300, y = 300)
-
-
-
-
 
 Main.mainloop()
