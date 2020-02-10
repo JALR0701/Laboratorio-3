@@ -61,23 +61,35 @@ def getSensor(): #Funcion para leer el puerto continuamente
             
         POT01.set(sensor1) #Definir el valor al texto variable de un label
         POT02.set(sensor2)
-    Main.after(1, getSensor) #Tiempo en ms que se ejecuta esta funcion
+    Main.after(10, getSensor) #Tiempo en ms que se ejecuta esta funcion
 
 def suma (): #Funcion suma
     global contador
     contador = contador + 1
     if contador > 255: #Contador de 8-bits
         contador = 0
+    if contador >= 100:
+        read3 = str(contador)
+    elif contador >= 10 and contador < 100:
+        read3 = "0" + str(contador)
+    else:
+        read3 = "00" + str(contador)
     data.write(struct.pack('>B',contador))
-    sensor3.set(contador)
+    sensor3.set(read3)
 
 def resta (): #Funcion resta
     global contador
     contador = contador - 1
     if contador < 0:
         contador = 255
+    if contador >= 100:
+        read3 = str(contador)
+    elif contador >= 10 and contador < 100:
+        read3 = "0" + str(contador)
+    else:
+        read3 = "00" + str(contador)
     data.write(struct.pack('>B',contador))
-    sensor3.set(contador)
+    sensor3.set(read3)
 
 name1 = tk.Label(Main, text = "POT01", bg = "black", fg = "white", font = ("Times New Roman", 14)) #Label de titulos
 name1.place(x = 75, y = 50)
@@ -101,7 +113,7 @@ read2 = tk.Label(Main, textvariable = POT02, bg = "black", fg = "white", font = 
 read2.place(x = 220, y = 100)
 
 sensor3 = tk.StringVar()
-sensor3.set(contador)
+sensor3.set("000")
 
 read3 = tk.Label(Main, textvariable = sensor3, bg = "black", fg = "white", font = ("OCR A Extended", 14))
 read3.place(x = 365, y = 100)
@@ -112,6 +124,6 @@ aumentar.place(x = 400, y = 150)
 decrementar = tk.Button(Main, text = "-", command = resta) #Boton enlazado con la funcion resta
 decrementar.place(x = 365, y = 150)
 
-Main.after(1, getSensor)
+Main.after(10, getSensor)
 
 Main.mainloop()
