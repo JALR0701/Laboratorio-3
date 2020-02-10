@@ -12,7 +12,7 @@
 #include <stdint.h>
 #define _XTAL_FREQ 4000000
 
-void initLCD (void);
+void initLCD (void); //Prototipos
 void lcd_cmd (uint8_t command);
 void lcd_clr (void);
 void lcd_set_cursor(uint8_t posy, uint8_t posx);

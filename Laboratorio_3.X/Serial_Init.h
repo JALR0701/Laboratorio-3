@@ -12,9 +12,8 @@
 #include <stdint.h>
 #define _XTAL_FREQ 4000000
 
-void initSerial (uint16_t baudrate);
+void initSerial (uint16_t baudrate);//Prototipos
 void send_int (int msg);
-//void receive_int (int ttl);
 
 #endif	/* SERIAL_INIT_H */
 

@@ -64,6 +64,6 @@ void lcd_write_string(char *var){
 
 void lcd_write_int(uint8_t numero){
     char buffer [4];
-    sprintf (buffer, "%d", numero);
+    sprintf (buffer, "%d", numero); //Convierte el int en string
     lcd_write_string(buffer);
 }

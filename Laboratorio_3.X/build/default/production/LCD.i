@@ -2720,7 +2720,6 @@ void main(void) {
 
     ANSEL = 0b00000011;
 
-
     PORTA = 0;
     PORTB = 0;
     PORTC = 0;
@@ -2760,7 +2759,6 @@ void main(void) {
             lcd_write_string("V");
         }else{
             lcd_write_string("0");
-            send_int(0);
             lcd_write_int(decimale1);
             lcd_write_string("V");
         }

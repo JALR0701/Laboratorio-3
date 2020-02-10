@@ -49,7 +49,7 @@
 [v _lcd_write_int lcd_write_int `(v  1 e 1 0 ]
 "7 C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\Serial_Init.c
 [v _initSerial initSerial `(v  1 e 1 0 ]
-"38
+"29
 [v _send_int send_int `(v  1 e 1 0 ]
 "166 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -205,13 +205,13 @@
 "52
 [v _main main `(v  1 e 1 0 ]
 {
-"151
+"149
 } 0
-"38 C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\Serial_Init.c
+"29 C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\Serial_Init.c
 [v _send_int send_int `(v  1 e 1 0 ]
 {
 [v send_int@msg msg `i  1 p 2 3 ]
-"42
+"33
 } 0
 "65 C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD_Init.c
 [v _lcd_write_int lcd_write_int `(v  1 e 1 0 ]
@@ -303,7 +303,7 @@
 [v _initSerial initSerial `(v  1 e 1 0 ]
 {
 [v initSerial@baudrate baudrate `ui  1 p 2 3 ]
-"36
+"27
 } 0
 "9 C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD_Init.c
 [v _initLCD initLCD `(v  1 e 1 0 ]

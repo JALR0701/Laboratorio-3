@@ -12,7 +12,7 @@
 #include <stdint.h>
 #define _XTAL_FREQ 4000000
 
-void initADC (uint8_t analog);
+void initADC (uint8_t analog); //Prototipo
 
 #endif	/* ADC_INIT_H */
 

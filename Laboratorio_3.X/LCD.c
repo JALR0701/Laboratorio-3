@@ -29,19 +29,19 @@
 #include "Serial_Init.h"
 #define _XTAL_FREQ 4000000
 
-uint8_t ready = 0, entero1 = 0, entero2 = 0, decimale1 = 0, decimale2 = 0, ttl = 0;
+uint8_t ready = 0, entero1 = 0, entero2 = 0, decimale1 = 0, decimale2 = 0, ttl = 0;//variables
 float adc1 = 0, adc2 = 0, decimal1 = 0, decimal2 = 0;
 
 void __interrupt() ISR (void){
     INTCONbits.GIE = 0;
     INTCONbits.PEIE = 0;
     
-    if(ADCON0bits.GO_DONE == 0){
+    if(ADCON0bits.GO_DONE == 0){//Si se realizo una conversion levantamos la bandera (se ejecua en el loop)
         ready = 1;
         PIR1bits.ADIF = 0;
     }
     
-    if (PIR1bits.RCIF == 1){
+    if (PIR1bits.RCIF == 1){//Si hay datos en el puerto se leen y se guardan en una variable
         ttl = RCREG;
     }
     
@@ -50,15 +50,14 @@ void __interrupt() ISR (void){
 }
 
 void main(void) {
-    TRISA = 0b00000011;
+    TRISA = 0b00000011;// Configuracion de puertos I/O
     TRISB = 0;
     TRISC = 0;
     TRISD = 0;
     
     ANSEL = 0b00000011;
     
-    
-    PORTA = 0;
+    PORTA = 0;//Valor inicial de los puertos
     PORTB = 0;
     PORTC = 0;
     PORTD = 0;
@@ -68,42 +67,41 @@ void main(void) {
     lcd_set_cursor(x,y);//Posicionar cursor
     lcd_write_string("Hola Mundo");//Escribir String*/
 
-    initLCD();
-    initSerial(9600);
-    lcd_clr();
-    lcd_set_cursor(1,1);
-    lcd_write_string ("POT01");
+    initLCD(); //Inicializar LCD
+    initSerial(9600);//Inicializar serial y baudrate
+    lcd_clr();//Limpiar LCD
+    lcd_set_cursor(1,1);//Posicionar cursor
+    lcd_write_string ("POT01");//Escribir texto
     lcd_set_cursor(7,1);
     lcd_write_string ("POT02");
     lcd_set_cursor(13,1);
     lcd_write_string ("TTL");
     
     while (1){ //Loop
-        initADC(0);
-        if(ready){
+        initADC(0); //Inicializamos el primer canal del ADC
+        if(ready){  //Guardamos el valor de la conversion
             adc1 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
         }
-        adc1 = adc1 * 5/255;
-        entero1 = adc1;
+        adc1 = adc1 * 5/255;//Mapeo de 255 a 5
+        entero1 = adc1;//separamos entero y decimal
         decimal1 = (adc1 - entero1)*100;
         decimale1 = decimal1;
         lcd_set_cursor(1,2);
-        lcd_write_int(entero1);
-        lcd_write_char('.');
-        if(decimale1 >= 10){
+        lcd_write_int(entero1);//escribimos el entero
+        lcd_write_char('.');//escibimos caracter
+        if(decimale1 >= 10){//escribimos decimal según el caso
             lcd_write_int(decimale1);
             lcd_write_string("V");
         }else{
             lcd_write_string("0");
-            send_int(0);
             lcd_write_int(decimale1);
             lcd_write_string("V");
         }
         __delay_ms(20);
         
-        initADC(1);
+        initADC(1);//Inicializamos el segundo canal del ADC y realizamos el mismo procedimiento
         if(ready){
             adc2 = ADRESH;
             ready = 0;
@@ -125,7 +123,7 @@ void main(void) {
             lcd_write_string("V");
         }
         __delay_ms(20);
-        if(ttl >=100){
+        if(ttl >=100){// escribimos el valor recibido en el RX segun sea el caso
             lcd_set_cursor (13,2);
             lcd_write_int (ttl);    
         }else if (ttl < 100 && ttl >= 10){
@@ -140,7 +138,7 @@ void main(void) {
         }
         
         
-        send_int(entero1);
+        send_int(entero1);//enviamos valores por el TX y mandamos un dato para ordenar
         send_int(decimale1);
         send_int(entero2);
         send_int(decimale2);

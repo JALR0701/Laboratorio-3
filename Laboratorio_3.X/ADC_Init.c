@@ -2,7 +2,7 @@
 #include <pic16f887.h>
 #include "ADC_Init.h"
 
-void initADC(uint8_t analog){
+void initADC(uint8_t analog){ //Inicializacion del ADC
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
     
@@ -14,7 +14,7 @@ void initADC(uint8_t analog){
     ADCON0bits.ADCS0 = 1;
     ADCON0bits.ADON = 1;
     
-    switch(analog){
+    switch(analog){ //Canal que se utilizara
         case 0:
             ADCON0bits.CHS3 = 0;
             ADCON0bits.CHS2 = 0;
@@ -129,5 +129,5 @@ void initADC(uint8_t analog){
     }
     ADCON1 = 0;
     
-    ADCON0bits.GO_DONE = 1;
+    ADCON0bits.GO_DONE = 1;//Iniciar la conversion
 }

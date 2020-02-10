@@ -2834,7 +2834,7 @@ void send_int (int msg);
 
 void initSerial(uint16_t baudrate){
     TRISC = 0x80;
-# 19 "Serial_Init.c"
+
     PIE1bits.RCIE = 0;
 
     TXSTA=0b00100110;

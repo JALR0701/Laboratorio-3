@@ -4,27 +4,18 @@
  #include <stdlib.h>
 #include "Serial_Init.h"
 
-void initSerial(uint16_t baudrate){
-    TRISC = 0x80;
+void initSerial(uint16_t baudrate){ //Inicializacion del USART
+    TRISC = 0x80; //Configuracion del puerto c
     
-    /*INTCONbits.GIE = 0;
-    INTCONbits.PEIE = 0;
+    PIE1bits.RCIE = 0; //Interrupcion del RX
     
-    PIE1bits.RCIE = 0;
-    PIE1bits.TXIE = 0;
+    TXSTA=0b00100110; //configuracion del TX
     
-    PIR1bits.RCIF = 0;
-    PIR1bits.TXIF = 0;*/
+    RCSTA=0b10010000; //configuración del RX
     
-    PIE1bits.RCIE = 0;
+    BAUDCTLbits.BRG16 = 1; //BaudrateHigh
     
-    TXSTA=0b00100110;
-    
-    RCSTA=0b10010000;
-    
-    BAUDCTLbits.BRG16 = 1;
-    
-    if(baudrate == 9600){
+    if(baudrate == 9600){ //casos del baudrate
         SPBRG = 103;
     } else if (baudrate == 10417){
         SPBRG = 95;
@@ -35,14 +26,8 @@ void initSerial(uint16_t baudrate){
     }
 }
 
-void send_int (int msg){
-    while (TXSTAbits.TRMT == 0){
+void send_int (int msg){ //funcion enviar enteros
+    while (TXSTAbits.TRMT == 0){//si no hay datos esperar
     }
-    TXREG = msg;
+    TXREG = msg;//enviar datos
 }
-
-//void receive_int (int ttl){
-//    if (PIR1bits.RCIF == 1){
-//        ttl = RCREG;
-//    }
-//}
