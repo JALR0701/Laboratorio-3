@@ -7,7 +7,7 @@
 void initSerial(uint16_t baudrate){ //Inicializacion del USART
     TRISC = 0x80; //Configuracion del puerto c
     
-    PIE1bits.RCIE = 0; //Interrupcion del RX
+    PIE1bits.RCIE = 1; //Interrupcion del RX
     
     TXSTA=0b00100110; //configuracion del TX
     

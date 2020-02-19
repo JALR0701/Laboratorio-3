@@ -44,7 +44,7 @@ bssBANK1 BANK1 1 A0 A0 10 1
 strings STRING 0 1000 1000 31 2
 clrtext CODE 0 1742 1742 8 2
 bssCOMMON COMMON 1 78 78 3 1
-$C:\Users\jorge\AppData\Local\Temp\sch8.o
+$C:\Users\jorge\AppData\Local\Temp\s378.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 0 2007 2007 2 2
@@ -104,24 +104,24 @@ STRING 1800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Laboratorio_3.X.production.o
-F cinit CODE >1077:C:\Users\jorge\AppData\Local\Temp\sch8.s
-F cinit CODE >1080:C:\Users\jorge\AppData\Local\Temp\sch8.s
-F cinit CODE >1139:C:\Users\jorge\AppData\Local\Temp\sch8.s
-10 cinit CODE >1140:C:\Users\jorge\AppData\Local\Temp\sch8.s
-11 cinit CODE >1141:C:\Users\jorge\AppData\Local\Temp\sch8.s
-12 cinit CODE >1144:C:\Users\jorge\AppData\Local\Temp\sch8.s
-13 cinit CODE >1145:C:\Users\jorge\AppData\Local\Temp\sch8.s
-14 cinit CODE >1146:C:\Users\jorge\AppData\Local\Temp\sch8.s
-15 cinit CODE >1147:C:\Users\jorge\AppData\Local\Temp\sch8.s
-16 cinit CODE >1148:C:\Users\jorge\AppData\Local\Temp\sch8.s
-17 cinit CODE >1151:C:\Users\jorge\AppData\Local\Temp\sch8.s
-18 cinit CODE >1152:C:\Users\jorge\AppData\Local\Temp\sch8.s
-19 cinit CODE >1153:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1A cinit CODE >1154:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1B cinit CODE >1155:C:\Users\jorge\AppData\Local\Temp\sch8.s
-20 cinit CODE >1161:C:\Users\jorge\AppData\Local\Temp\sch8.s
-20 cinit CODE >1163:C:\Users\jorge\AppData\Local\Temp\sch8.s
-21 cinit CODE >1164:C:\Users\jorge\AppData\Local\Temp\sch8.s
+F cinit CODE >1077:C:\Users\jorge\AppData\Local\Temp\s378.s
+F cinit CODE >1080:C:\Users\jorge\AppData\Local\Temp\s378.s
+F cinit CODE >1139:C:\Users\jorge\AppData\Local\Temp\s378.s
+10 cinit CODE >1140:C:\Users\jorge\AppData\Local\Temp\s378.s
+11 cinit CODE >1141:C:\Users\jorge\AppData\Local\Temp\s378.s
+12 cinit CODE >1144:C:\Users\jorge\AppData\Local\Temp\s378.s
+13 cinit CODE >1145:C:\Users\jorge\AppData\Local\Temp\s378.s
+14 cinit CODE >1146:C:\Users\jorge\AppData\Local\Temp\s378.s
+15 cinit CODE >1147:C:\Users\jorge\AppData\Local\Temp\s378.s
+16 cinit CODE >1148:C:\Users\jorge\AppData\Local\Temp\s378.s
+17 cinit CODE >1151:C:\Users\jorge\AppData\Local\Temp\s378.s
+18 cinit CODE >1152:C:\Users\jorge\AppData\Local\Temp\s378.s
+19 cinit CODE >1153:C:\Users\jorge\AppData\Local\Temp\s378.s
+1A cinit CODE >1154:C:\Users\jorge\AppData\Local\Temp\s378.s
+1B cinit CODE >1155:C:\Users\jorge\AppData\Local\Temp\s378.s
+20 cinit CODE >1161:C:\Users\jorge\AppData\Local\Temp\s378.s
+20 cinit CODE >1163:C:\Users\jorge\AppData\Local\Temp\s378.s
+21 cinit CODE >1164:C:\Users\jorge\AppData\Local\Temp\s378.s
 4 intentry CODE >35:C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD.c
 1779 text21 CODE >35:C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD.c
 1779 text21 CODE >36:C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD.c
@@ -796,16 +796,16 @@ FF maintext CODE >88:C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X
 3C5 maintext CODE >143:C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD.c
 3D5 maintext CODE >144:C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD.c
 3E3 maintext CODE >145:C:\Users\jorge\MPLABXProjects\Laboratorio-3\Laboratorio_3.X\LCD.c
-1742 clrtext CODE >1126:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1742 clrtext CODE >1127:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1743 clrtext CODE >1128:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1743 clrtext CODE >1129:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1744 clrtext CODE >1130:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1745 clrtext CODE >1131:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1746 clrtext CODE >1132:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1747 clrtext CODE >1133:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1748 clrtext CODE >1134:C:\Users\jorge\AppData\Local\Temp\sch8.s
-1749 clrtext CODE >1135:C:\Users\jorge\AppData\Local\Temp\sch8.s
+1742 clrtext CODE >1126:C:\Users\jorge\AppData\Local\Temp\s378.s
+1742 clrtext CODE >1127:C:\Users\jorge\AppData\Local\Temp\s378.s
+1743 clrtext CODE >1128:C:\Users\jorge\AppData\Local\Temp\s378.s
+1743 clrtext CODE >1129:C:\Users\jorge\AppData\Local\Temp\s378.s
+1744 clrtext CODE >1130:C:\Users\jorge\AppData\Local\Temp\s378.s
+1745 clrtext CODE >1131:C:\Users\jorge\AppData\Local\Temp\s378.s
+1746 clrtext CODE >1132:C:\Users\jorge\AppData\Local\Temp\s378.s
+1747 clrtext CODE >1133:C:\Users\jorge\AppData\Local\Temp\s378.s
+1748 clrtext CODE >1134:C:\Users\jorge\AppData\Local\Temp\s378.s
+1749 clrtext CODE >1135:C:\Users\jorge\AppData\Local\Temp\s378.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -830,13 +830,13 @@ __size_of_lcd_cmd 0 0 ABS 0 - dist/default/production\Laboratorio_3.X.production
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 lcd_write_int@buffer 39 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_3.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\jorge\AppData\Local\Temp\sch8.o
+___sp 0 0 STACK 2 stack C:\Users\jorge\AppData\Local\Temp\s378.o
 _adc1 AC 0 BANK1 1 bssBANK1 dist/default/production\Laboratorio_3.X.production.o
 _adc2 A8 0 BANK1 1 bssBANK1 dist/default/production\Laboratorio_3.X.production.o
 _main 48 0 CODE 0 maintext dist/default/production\Laboratorio_3.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Laboratorio_3.X.production.o
 _lcd_write_int 2F2A 0 CODE 0 text2 dist/default/production\Laboratorio_3.X.production.o
-start 18 0 CODE 0 init C:\Users\jorge\AppData\Local\Temp\sch8.o
+start 18 0 CODE 0 init C:\Users\jorge\AppData\Local\Temp\s378.o
 ___flmul@aexp 4A 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_3.X.production.o
 ___flmul@bexp 4B 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_3.X.production.o
 ___flmul@prod 4C 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_3.X.production.o
@@ -855,12 +855,12 @@ __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __end_of_lcd_write_char 102E 0 CODE 0 text7 dist/default/production\Laboratorio_3.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
 __size_of_initSerial 0 0 ABS 0 - dist/default/production\Laboratorio_3.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\sch8.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\sch8.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\sch8.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\sch8.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\sch8.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\sch8.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s378.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s378.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s378.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s378.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s378.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s378.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Laboratorio_3.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -894,8 +894,8 @@ __end_of___lwmod 10A6 0 CODE 0 text4 dist/default/production\Laboratorio_3.X.pro
 __size_of_lcd_write_int 0 0 ABS 0 - dist/default/production\Laboratorio_3.X.production.o
 lcd_write_string@i 23 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_3.X.production.o
 __Umul8_16@multiplicand 73 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_3.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\jorge\AppData\Local\Temp\sch8.o
-___stacklo 0 0 ABS 0 - C:\Users\jorge\AppData\Local\Temp\sch8.o
+___stackhi 0 0 ABS 0 - C:\Users\jorge\AppData\Local\Temp\s378.o
+___stacklo 0 0 ABS 0 - C:\Users\jorge\AppData\Local\Temp\s378.o
 _dpowers 2020 0 STRING 0 strings dist/default/production\Laboratorio_3.X.production.o
 _BAUDCTLbits 187 0 ABS 0 - dist/default/production\Laboratorio_3.X.production.o
 ___lwdiv@quotient 21 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_3.X.production.o
@@ -919,7 +919,7 @@ __pcstackBANK1 B0 0 BANK1 1 cstackBANK1 dist/default/production\Laboratorio_3.X.
 __size_of_lcd_set_cursor 0 0 ABS 0 - dist/default/production\Laboratorio_3.X.production.o
 __end_of_initADC FDE 0 CODE 0 text13 dist/default/production\Laboratorio_3.X.production.o
 __end_of_initLCD 12E2 0 CODE 0 text11 dist/default/production\Laboratorio_3.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\jorge\AppData\Local\Temp\sch8.o
+___int_sp 0 0 STACK 2 stack C:\Users\jorge\AppData\Local\Temp\s378.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -991,7 +991,7 @@ _entero1 6D 0 BANK0 1 bssBANK0 dist/default/production\Laboratorio_3.X.productio
 _entero2 6C 0 BANK0 1 bssBANK0 dist/default/production\Laboratorio_3.X.production.o
 _lcd_clr 2E76 0 CODE 0 text9 dist/default/production\Laboratorio_3.X.production.o
 _lcd_cmd 2E94 0 CODE 0 text12 dist/default/production\Laboratorio_3.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\jorge\AppData\Local\Temp\sch8.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\jorge\AppData\Local\Temp\s378.o
 __end_of___xxtofl 1552 0 CODE 0 text14 dist/default/production\Laboratorio_3.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __LbssBANK1 0 0 ABS 0 bssBANK1 -

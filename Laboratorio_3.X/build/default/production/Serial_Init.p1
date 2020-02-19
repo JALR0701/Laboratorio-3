@@ -300,8 +300,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Serial_Init.c: 8:     TRISC = 0x80;
 [e = _TRISC -> -> 128 `i `uc ]
 "10
-[; ;Serial_Init.c: 10:     PIE1bits.RCIE = 0;
-[e = . . _PIE1bits 0 5 -> -> 0 `i `uc ]
+[; ;Serial_Init.c: 10:     PIE1bits.RCIE = 1;
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
 "12
 [; ;Serial_Init.c: 12:     TXSTA=0b00100110;
 [e = _TXSTA -> -> 38 `i `uc ]
